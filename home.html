@@ -16,9 +16,11 @@
                 margin-top: 70px;
                 background-color: #333;
                 color: #f4f4f4;
+                
             };
         </style>
     </head>
+    <!-- you can apply bg-incerse class to body -->
     <body>
         <div class="container">
             <div class="row">
@@ -34,6 +36,16 @@
                                 max="50"
                                 placeholder="Enter Pounds....">
                         </div>
+                       <!-- Alerting User for +ve data
+                        <div id="errormsg">
+                            <div class="card card-warning mb-3 text-center">
+                                <div class="card-block ">
+                                    <div id="msg">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
                     </form>
                     <div id="output">
                         <div class="card card-primary mb-2">
@@ -63,6 +75,14 @@
                     </div>
                 </div>
             </div>
+            <div class="clearfix"></div>
+
+            <!-- Footer -->
+            <footer class="fixed-bottom">
+                <div class="col-md-6 offset-md-3 text-center text-inverse">
+                    <p class="h6 font-weight-normal">&copy;2017, kumardss@outlook.com</p>
+                </div>
+            </footer>
         </div>
         
         <!-- vanilla JavaScript -->
@@ -70,12 +90,16 @@
             document.getElementById('output').style.visibility='hidden';
             document.getElementById('txtlbs').addEventListener('input', function(e){
                     lbs=e.target.value;
-                document.getElementById('output').style.visibility='visible';
-
-                document.getElementById('gramsOutput').innerHTML= lbs/0.0022046;
-                document.getElementById('kilogramsOutput').innerHTML=lbs/2.2046;
-                document.getElementById('ozOutput').innerHTML=lbs*16;
-
+                if(lbs!= '' && lbs>0)
+                {
+                    document.getElementById('output').style.visibility='visible';
+                    document.getElementById('gramsOutput').innerHTML= lbs/0.0022046;
+                    document.getElementById('kilogramsOutput').innerHTML=lbs/2.2046;
+                    document.getElementById('ozOutput').innerHTML=lbs*16;
+                }
+                else{
+                    document.getElementById('output').style.visibility='hidden';
+                }
             })
         </script>
     </body>
